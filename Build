@@ -1,0 +1,12 @@
+#!/bin/bash
+
+nasm -felf64 $1.asm -o $1.o;
+read -p "Did the program compile right?" yn;
+case $yn in
+  [Yy]* ) ld -o $1 $1.o;;
+  [Nn]* ) exit;;
+esac
+chmod u+x $1
+clear
+echo "Program live"
+./$1
